@@ -1,10 +1,10 @@
 {
     "name": "orca-input-file",
     "displayName": "Orca Input File",
-    "publisher": "jenskrumsieck",
-    "repository": "https://github.com/JensKrumsieck/orca-input-file",
+    "publisher": "jenskrumsieck, smk578",
+    "repository": "https://github.com/smk578/orca-input-file",
     "description": "",
-    "version": "0.4.0",
+    "version": "6.0.0",
     "engines": {
         "vscode": "^1.44.0"
     },
