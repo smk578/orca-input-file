@@ -226,7 +226,7 @@
         "localCorrelationMethods": {
             "patterns": [
                 {
-                    "match": "\\b(?i)(DLPNO-CCSD(?:(T)|(T1)|-F12|-F12/D|-(T)-F12|-(T)-F12/D|-(T1)-F12|-(T1)-F12/D)?|DLPNO-MP2|DLPNO-SCS-MP2|SCS-DLPNO-MP2|DLPNO-MP2(?:-F12|-F12/D)?|DLPNO-NEVPT2)\\b",
+                    "match": "\\b(?i)(DLPNO-CCSD(?:(T)|(T1)|-F12|-F12/D|-(T)-F12|-(T)-F12/D|-(T1)-F12|-(T1)-F12/D)?|DLPNO-MP2|DLPNO-SCS-MP2|SCS-DLPNO-MP2|DLPNO-MP2(?:-F12|-F12/D)?|DLPNO-NEVPT2|((D)?LPNO|SC|RI|FIC)-?(OO-|SCS-)?(RI-)?MP2(-F12)?(-RI)?)\\b",
                     "name": "keyword.control.localCorrelationMethods.orca_input"
                 }
             ]
@@ -246,10 +246,6 @@
         "keywords": {
             "patterns": [
                 {
-                    "match": "\\b(?i)(HF|DFT|FOD|UHF|RKS|UKS|RHF|ROKS|ROHF)\\b",
-                    "name": "keyword.control.orca_input"
-                },
-                {
                     "match": "\\b(?i)(SP|ENERGY|(GDIIS-)?(Z|C)?OPT|ENGRAD|NUMGRAD|(NUM)?FREQ|MD|CIM|GOAT|PAL\\d{1,2}|CPCM|SMD)\\b",
                     "name": "support.function.orca_input"
                 },
@@ -258,32 +254,8 @@
                     "name": "keyword.control.orca_input"
                 },
                 {
-                    "match": "\\b(?i)(((D)?LPNO|SC|RI|FIC)-)?(OO-|SCS-)?(RI-)?MP2(-F12)?(-RI)?\\b",
-                    "name": "keyword.control.orca_input"
-                },
-                {
-                    "match": "\\b(?i)((D)?LPNO-)?(Q)?C(C|I)SD(\\(T\\))?(-F12)?\\b",
-                    "name": "keyword.control.orca_input"
-                },
-                {
-                    "match": "\\b(?i)(((D)?LPNO|SC|RI|FIC)-)?NEVPT2(-F12)?\\b",
-                    "name": "keyword.control.orca_input"
-                },
-                {
-                    "match": "\\b(?i)(MRCI|MRA(CPF|QCC|DCI\\d))\\b",
-                    "name": "keyword.control.orca_input"
-                },
-                {
-                    "match": "\\b(?i)(NO)?FROZENCORE\\b",
-                    "name": "keyword.control.orca_input"
-                },
-                {
                     "match": "\\b(?i)(ZINDO|NDDO|MNDO)\\/(S|1|2)|AM1|PM3|XTB\\b",
                     "name": "keyword.control.orca_input"
-                },
-                {
-                    "match": "\\b(?i)(NO|SPLIT)?RI(-JK|JCOSX|-J|JK|JONX)?(-XC)?\\b",
-                    "name": "variable.orca_input"
                 },
                 {
                     "match": "\\b(?i)(NOITER|CONV|(SEMI)?DIRECT|MOREAD|PATOM|PMODEL|HUECKEL|HCORE|(NO)?AUTOSTART)\\b",
