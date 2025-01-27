@@ -24,6 +24,29 @@
                     "name": "keyword.orca_input",
                     "patterns": [
                         {
+                            "match": "\\b(?i)(PAL\\d+|OPT|FREQ|NEB(-?(CI|TS|FAST|LOOSE|TIGHT|ZOOM))?|SP|ENERGY|GDIIS-(Z|C)?OPT|ENGRAD|NUM?FREQ|MD|CIM|GOAT|CPCM|SMD)\\b",
+                            "name": "support.function.orca_input"
+                        },
+                        {
+                            "patterns": [
+                                {
+                                    "match": "\\b(?i)(SMD|CPCM)\\b",
+                                    "name": "support.function.orca_input"
+                                },
+                                {
+                                    "begin": "\\(",
+                                    "end": "\\)",
+                                    "name": "meta.group.solvent.orca_input",
+                                    "patterns": [
+                                        {
+                                            "match": "[^)]+",
+                                            "name": "support.type.basis-set.orca_input"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
                             "include": "#localGradientCorrected"
                         },
                         {
@@ -78,7 +101,7 @@
             "patterns": [
                 {
                     "begin": "(?i)(^(%)|NewGTO|AddGTO|NewECP|NewAuxJGTO|AddAuxJGTO|NewAuxCGTO|AddAuxCGTO|NewAuxJKGTO|AddAuxJKGTO|NewCABSGTO|AddCABSGTO)",
-                    "end": "(end)",
+                    "end": "(?=\\n|\\s*!|end)",
                     "name": "meta.preprocessor.orca_input",
                     "patterns": [
                         {
@@ -218,7 +241,7 @@
         "highLevelSingleReferenceMethods": {
             "patterns": [
                 {
-                    "match": "\\b(?i)(CCSD(?:\\\\(T\\\\)|-F12|-F12D-RI|-\\\\(T\\\\)-F12-RI|-\\\\(T\\\\)-F12D-RI)?|QCISD(?:\\\\(T\\\\)|-F12|-F12-RI|-\\\\(T\\\\)-F12-RI)?|NCPF/1|CEPA/1|NCEPA/1|RI-CEPA/1-F12|MP3|SCS-MP3)\\b",
+                    "match": "\\b(?i)(CCSD(?:\\(T\\)|-F12|-F12D-RI|-\\(T\\)-F12-RI|-\\(T\\)-F12D-RI)?|QCISD(?:\\(T\\)|-F12|-F12-RI|-\\(T\\)-F12-RI)?)\\b",
                     "name": "keyword.control.highLevelSingleReferenceMethods.orca_input"
                 }
             ]
@@ -226,7 +249,7 @@
         "localCorrelationMethods": {
             "patterns": [
                 {
-                    "match": "\\b(?i)(DLPNO-CCSD(?:(T)|(T1)|-F12|-F12/D|-(T)-F12|-(T)-F12/D|-(T1)-F12|-(T1)-F12/D)?|DLPNO-MP2|DLPNO-SCS-MP2|SCS-DLPNO-MP2|DLPNO-MP2(?:-F12|-F12/D)?|DLPNO-NEVPT2|((D)?LPNO|SC|RI|FIC)-?(OO-|SCS-)?(RI-)?MP2(-F12)?(-RI)?)\\b",
+                    "match": "\\b(?i)(DLPNO-(CCSD|MP2|NEVPT2)((\\(T\\)|\\(T1\\))?(-F12)?(-F12/D)?)?)\\b",
                     "name": "keyword.control.localCorrelationMethods.orca_input"
                 }
             ]
@@ -246,11 +269,15 @@
         "keywords": {
             "patterns": [
                 {
-                    "match": "\\b(?i)(SP|ENERGY|(GDIIS-)?(Z|C)?OPT|ENGRAD|NUMGRAD|(NUM)?FREQ|MD|CIM|GOAT|PAL\\d{1,2}|CPCM|SMD)\\b",
+                    "match": "\\b(?i)(SP|ENERGY|GDIIS-(Z|C)?OPT|Z?OPT|ENGRAD|NUM?FREQ|FREQ|MD|CIM|GOAT|PAL\\d+|NEB(-?(CI|TS|FAST|LOOSE|TIGHT|ZOOM))?)\\b",
                     "name": "support.function.orca_input"
                 },
                 {
-                    "match": "\\b(?i)(No?)UseSym\\b",
+                    "match": "\\b(?i)((FAST|LOOSE|TIGHT|ZOOM)?-?NEB(-?(CI|TS))?)\\b",
+                    "name": "support.function.orca_input"
+                },
+                {
+                    "match": "\\b(?i)(NO)?UseSym\\b",
                     "name": "keyword.control.orca_input"
                 },
                 {
@@ -258,11 +285,11 @@
                     "name": "keyword.control.orca_input"
                 },
                 {
-                    "match": "\\b(?i)(NOITER|CONV|(SEMI)?DIRECT|MOREAD|PATOM|PMODEL|HUECKEL|HCORE|(NO)?AUTOSTART)\\b",
+                    "match": "\\b(?i)(NOITER|CONV|SEMI?DIRECT|MOREAD|PATOM|PMODEL|HUECKEL|HCORE|NO?AUTOSTART)\\b",
                     "name": "emphasis.orca_input"
                 },
                 {
-                    "match": "\\b(?i)(No)?Decontract(Aux)?\\b",
+                    "match": "\\b(?i)(NO)?Decontract(Aux)?\\b",
                     "name": "emphasis.orca_input"
                 },
                 {
@@ -270,7 +297,7 @@
                     "name": "keyword.control.orca_input"
                 },
                 {
-                    "match": "\\b(?i)(NO?)(FINAL)?GRID(X?)(\\d)?\\b",
+                    "match": "\\b(?i)(NO?FINAL?GRIDX?\\d?)\\b",
                     "name": "variable.orca_input"
                 },
                 {
@@ -314,7 +341,7 @@
                     "name": "emphasis.orca_input"
                 },
                 {
-                    "match": "\\b(?i)(CPCM|UNO|AIM)",
+                    "match": "\\b(?i)(CPCM|UNO|AIM)\\b",
                     "name": "emphasis.orca_input"
                 },
                 {
